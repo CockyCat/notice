@@ -1,0 +1,110 @@
+----------增加sudo-----------------
+
+visudo  
+
+xugang      ALL=(ALL)       NOPASSWD: ALL
+
+-------------------------------------
+
+
+
+tar -cvf /tmp/etc.tar /etc		打包
+
+tar -cvf d.tar a b c   打包多个文件夹
+
+sed -i "s/justGetTop/justGetPush/g" `grep justGetTop -rl class/`  批量替换
+
+-------------------
+
+grep -E "a|b"				grep多个条件
+grep -v "a|b"				反向匹配
+
+---------------
+
+命令后面跟上& 用于将命令在后台执行。
+ctrl+z			返回后台线程
+jobs			查看后台线程
+fg 				将后台线程变成前台线程
+fg 2			将编号为2的后台线程变为前台线程	
+
+
+----------------ssh------------------------
+
+ ssh -qTfnN -D 7070 112.23.23.1			ssh代理
+
+
+---------------------php-fpm------------------
+
+
+php-fpm 关闭：
+kill -INT `cat /usr/local/php/var/run/php-fpm.pid`
+php-fpm 重启：
+kill -USR2 `cat /usr/local/php/var/run/php-fpm.pid`
+
+查看php-fpm进程数：
+
+ps aux | grep -c php-fpm
+
+-----------------mysqldump-------------
+
+几个常用用例：
+1.导出整个数据库
+mysqldump -u wcnc -p smgp_apps_wcnc > wcnc.sql
+2.导出一个表
+mysqldump -u wcnc -p smgp_apps_wcnc users > ./wcnc_users.sql
+3.导出一个数据库结构
+mysqldump --opt -d wos -u root -p > wos.sql
+
+-----------------------crontab-----------------------
+
+crontab -e				打开crontab进行编辑
+
+*/15 * * * * curl http://zhixianghd.com/spider/spider.php	每15分钟执行curl命令
+
+sudo service cron restart 			重启crontab服务 ，使配置的任务执行
+sudo /sbin/service crond restart
+
+-----------telnet------------------------
+
+ctrl+]     q  回车			退出telnet连接
+
+------------------负载相关-------------------------
+
+free -g				查看内存（单位G）
+
+strace -p PID		追踪进程
+
+lsof -n |awk '{print $2}'|sort|uniq -c |sort -nr|more		句柄数量从高到低排，第一个字段是句柄数量，第二个是pid
+
+ps -A --sort -rss -o comm,pmem,pcpu |uniq -c |head -15		内存占用从高到低排序
+
+ps -aef|grep 24204											查看pid 24204进程的详细情况 
+
+ulimit -HSn 4096								H指定了硬性大小，S指定了软性大小，n表示设定单个进程最大的打开文件句柄数量
+
+cat /proc/cpuinfo			查看cpu个数等信息
+
+
+---------------ssh key------------------
+ssh-keygen -t rsa
+
+
+--------------rc.local--------------
+/etc/rc.local   开机自动启动的命令
+
+-------------ssh server ------------------------
+sudo apt-get install openssh-server
+sudo /etc/init.d/ssh stop
+sudo /etc/init.d/ssh start
+
+
+-----------locate-------------------
+locate pdo.so    
+
+------------ffmpeg-------------------
+
+ffmpeg -i VID_20130909_102640.mp4 2>&1|grep Duration | cut -f 4 -d ''   获取视频文件时长
+
+ffmpeg -i VID_20130909_102640.mp4 -y -f  image2  -ss 00:01:00 -vframes 1  test1.jpg   截取视频文件缩略图
+
+

@@ -1,0 +1,17 @@
+show variables like '%sche%';									查看定时任务状态
+set global event_scheduler=1;									将事件计划开启
+alter event e_test ON COMPLETION PRESERVE DISABLE;				关闭事件任务
+alter event e_test ON COMPLETION PRESERVE ENABLE; 				开户事件任务
+show events;													查看事件
+
+
+select `name` from mysql.proc where db = 'uad' and `type` = 'PROCEDURE';	查看存储过程
+show create procedure checkContract;										查看存储过程内容
+
+
+1.导出整个数据库
+mysqldump -u wcnc -p smgp_apps_wcnc > wcnc.sql
+2.导出一个表
+mysqldump -u wcnc -p smgp_apps_wcnc users> wcnc_users.sql
+3.导出一个数据库结构
+mysqldump -u wcnc -p -d --add-drop-table smgp_apps_wcnc >d:\wcnc_db.sql
