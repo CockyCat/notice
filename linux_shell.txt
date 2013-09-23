@@ -28,6 +28,8 @@ grep -E "a|b"				grep多个条件
 
 ffmpeg -i ".$file." 2>&1|grep -E 'Duration|Stream #0:0|Stream #0:1'|cut -d ' ' -f 2-100;
 
+cut -d ' ' -f 7-10	输出截取第7到第10个空格
+ll 2013092311411413799076740737923.mp4 |cut -d ' ' -f 5
 
 grep -v "a|b"				反向匹配
 
