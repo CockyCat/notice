@@ -125,7 +125,10 @@ ffmpeg -i VID_20130909_102640.mp4 -y -f  image2  -ss 00:01:00 -vframes 1  test1.
 
 md5sum host.mp4 > host.md5		生成签名文件
 
-
 把下载的文件file和该文件的file.md5报文摘要文件放在同一个目录下，然后用如下命令进行验证：
 
 md5sum -c host.md5
+
+find /data/video -type f -print0 | xargs -0 md5sum > video.md5     对整个video目录生成签名
+
+md5sum -c file1.md5 | grep FAILED  	检测签名验证失败的文件
