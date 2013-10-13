@@ -3,6 +3,9 @@
 visudo  
 
 xugang      ALL=(ALL)       NOPASSWD: ALL
+
+
+
 ---------------top--------------------
 
 top  按大写M  显示占用内存最大的5个进程
@@ -10,6 +13,8 @@ top  按大写M  显示占用内存最大的5个进程
 
 free -g				查看内存（单位G）
 df -h				查看磁盘空间
+
+
 -------------------------------------
 
 
@@ -86,6 +91,7 @@ ctrl+]     q  回车			退出telnet连接
 
 
 strace -p PID		追踪进程
+pstree -p|grep chrmoe  查看进程树
 
 lsof -n |awk '{print $2}'|sort|uniq -c |sort -nr|more		句柄数量从高到低排，第一个字段是句柄数量，第二个是pid
 
@@ -103,6 +109,7 @@ ssh-keygen -t rsa
 
 
 --------------rc.local--------------
+
 /etc/rc.local   开机自动启动的命令
 
 -------------ssh server ------------------------
