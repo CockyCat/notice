@@ -102,8 +102,11 @@ cat /proc/cpuinfo			查看cpu个数等信息
 ssh-keygen -t rsa
 
 
---------------rc.local--------------
+-------------- etc --------------
 /etc/rc.local   开机自动启动的命令
+/etc/fstab      用fstab可以自动挂载各种文件系统格式的硬盘、分区、可移动设备和远程设备等
+
+
 
 -------------ssh server ------------------------
 sudo apt-get install openssh-server
@@ -132,3 +135,17 @@ md5sum -c host.md5
 find /data/video -type f -print0 | xargs -0 md5sum > video.md5     对整个video目录生成签名
 
 md5sum -c file1.md5 | grep FAILED  	检测签名验证失败的文件
+
+
+
+
+----------------mysql 允许远程连接------------
+mysql>use mysql;
+
+mysql>update user set host = '%'  where user ='root';
+
+mysql>flush privileges;
+
+mysql>select 'host','user' from user where user='root';
+
+mysql>quit
