@@ -3,6 +3,9 @@
 visudo  
 
 xugang      ALL=(ALL)       NOPASSWD: ALL
+
+
+
 ---------------top--------------------
 
 top  按大写M  显示占用内存最大的5个进程
@@ -10,6 +13,9 @@ top  按大写M  显示占用内存最大的5个进程
 
 free -g				查看内存（单位G）
 df -h				查看磁盘空间
+du -sh 	/xxx		查看xxx文件夹大小
+
+
 -------------------------------------
 
 
@@ -57,7 +63,9 @@ kill -USR2 `cat /usr/local/php/var/run/php-fpm.pid`
 
 查看php-fpm进程数：
 
-ps aux | grep -c php-fpm
+ps aux | grep -c php-fpm  或 ps aux | grep php-fpm|wc -l
+
+pgrep proftpd   返回进程id
 
 -----------------mysqldump-------------
 
@@ -86,6 +94,7 @@ ctrl+]     q  回车			退出telnet连接
 
 
 strace -p PID		追踪进程
+pstree -p|grep chrmoe  查看进程树
 
 lsof -n |awk '{print $2}'|sort|uniq -c |sort -nr|more		句柄数量从高到低排，第一个字段是句柄数量，第二个是pid
 
@@ -103,6 +112,7 @@ ssh-keygen -t rsa
 
 
 -------------- etc --------------
+
 /etc/rc.local   开机自动启动的命令
 /etc/fstab      用fstab可以自动挂载各种文件系统格式的硬盘、分区、可移动设备和远程设备等
 
@@ -149,3 +159,9 @@ mysql>flush privileges;
 mysql>select 'host','user' from user where user='root';
 
 mysql>quit
+
+
+
+-----------------wput-----------------------
+
+wput -B ./$date*.ini ftp://$ftp_name:$ftp_pwd@$ftp_ip
