@@ -62,17 +62,24 @@ fg 2			将编号为2的后台线程变为前台线程
 
 ---------------------php-fpm------------------
 
+php-fpm启动
+sudo /usr/local/meizi/php/sbin/php-fpm
 
 php-fpm 关闭：
 kill -INT `cat /usr/local/php/var/run/php-fpm.pid`
 php-fpm 重启：
 kill -USR2 `cat /usr/local/php/var/run/php-fpm.pid`
 
+
 查看php-fpm进程数：
 
 ps aux | grep -c php-fpm  或 ps aux | grep php-fpm|wc -l
 
 pgrep proftpd   返回进程id
+
+-------------kill ----------------------
+
+sudo killall wput  杀掉叫wput的进程
 
 -----------------mysqldump-------------
 
@@ -153,7 +160,9 @@ find /data/video -type f -print0 | xargs -0 md5sum > video.md5     对整个vide
 
 md5sum -c file1.md5 | grep FAILED  	检测签名验证失败的文件
 
+----------------mysql----------------------
 
+/usr/local/meizi/mysql/bin/mysqld_safe -u mysql &    		启动mysql
 
 
 ----------------mysql 允许远程连接------------
