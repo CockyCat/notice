@@ -35,6 +35,8 @@ sed -i "s/justGetTop/justGetPush/g" `grep justGetTop -rl class/`  批量替换
 
 find  -name "*.php"|xargs grep "mkdir"  				查找含有mkdir的文件
 
+grep -ri "listen = " /etc/php-fpm*	查找/etc/php-fpm含有listen关键字的文件
+
 -------------------
 
 grep -E "a|b"				grep多个条件
