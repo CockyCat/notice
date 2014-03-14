@@ -126,6 +126,9 @@ cat /proc/cpuinfo			查看cpu个数等信息
 netstat -an 查看端口
 netstat -an|grep 9000  		查看是否监听9000端口
 
+
+sudo lsof -i tcp:9000	查看9000
+
 ---------------ssh key------------------
 ssh-keygen -t rsa
 
@@ -151,6 +154,27 @@ locate pdo.so
 ffmpeg -i VID_20130909_102640.mp4 2>&1|grep Duration | cut -f 4 -d ''   获取视频文件时长
 
 ffmpeg -i VID_20130909_102640.mp4 -y -f  image2  -ss 00:01:00 -vframes 1  test1.jpg   截取视频文件缩略图
+
+
+MKV转码：
+
+
+ffmpeg -y -i test12.mkv -vcodec mpeg4 -s 1280x720 -aspect 16:9 -r 23.97 -b 3000k -acodec copy -ac 6 -ar 48000 -ab 128 -f mp4 out_test12.mp4
+
+
+
+
+ffmpeg -y -i [不朽].22.Bullets.2010.BDRip.480p.AC3.x264-CHD.chs.mkv -vcodec libx264 -s 1280x720 -aspect 16:9 -r 23.97 -b 1200k -acodec libfaac -ac 6 -strict 2 -ar 48000 -ab 128 -f mp4 不朽_2.mp4
+
+
+TS转码：
+
+ffmpeg -y -i 2014022711490113934729416366272.ts -vcodec libx264 -s 1280x720 -aspect 16:9 -r 23.97 -b 3000k -acodec libfaac -ac 2 -ar 48000 -ab 128 -f mp4 -async 2 out_test12.mp4
+
+
+压外挂字幕
+
+/usr/local/bin/ffmpeg -y -f srt -i /data/nfs/transcoding_video/电影/Thor.srt -i /data/nfs/transcoding_video/电影/Thor.mkv -vcodec libx264 -s 1280x720 -aspect 16:9 -r 23.97 -b 1200k -acodec libfaac -ac 6 -strict 2 -ar 48000 -ab 128 -f mp4 /data/nfs/transcoding_video/电影/Thor.mkv.mp4
 
 
 -----------md5sum  生成文件md5签名，校验文件完整性--------------------
