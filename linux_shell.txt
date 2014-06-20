@@ -212,3 +212,9 @@ mysql>quit
 -----------------wput-----------------------
 
 wput -B ./$date*.ini ftp://$ftp_name:$ftp_pwd@$ftp_ip
+
+
+sort -n -t  $'\t' -k1 -k2 today_halfhour.msg.stat.f|more         按照tab排序
+
+
+find /home/raven -name abc.txt | xargs rm -rf			查找出某些文件删除
