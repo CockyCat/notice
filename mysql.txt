@@ -15,3 +15,16 @@ mysqldump -u wcnc -p smgp_apps_wcnc > wcnc.sql
 mysqldump -u wcnc -p smgp_apps_wcnc users> wcnc_users.sql
 3.导出一个数据库结构
 mysqldump -u wcnc -p -d --add-drop-table smgp_apps_wcnc >d:\wcnc_db.sql
+
+
+---------从文件导入到表--------------
+a.txt:
+
+110|1|f
+111|2|f
+112|3|f
+
+将以上文本格式导入到pt_test表里
+mysql -uroot -p'abc123' db_test -e "LOAD DATA LOCAL INFILE 'a.txt' REPLACE INTO TABLE pt_test FIELDS TERMINATED BY '|'"
+
+
