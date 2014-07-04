@@ -223,3 +223,9 @@ find /home/raven -name abc.txt | xargs rm -rf			查找出某些文件删除
 --------------rsync-------------------
 
 rsync --daemon 			rsync 启动
+
+
+----------echo 111 > aa.txt-----------
+echo aaa > 11.txt	覆盖写入 
+echo aaa >> 11.txt	追加写入 
+
