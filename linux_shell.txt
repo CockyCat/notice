@@ -33,11 +33,23 @@ tar -cvf /tmp/etc.tar /etc		打包
 
 tar -cvf d.tar a b c   打包多个文件夹
 
+
+--------------------sed----------------------
+
 sed -i "s/justGetTop/justGetPush/g" `grep justGetTop -rl class/`  批量替换
+
+sed -i '1d' 		删除第一行
+
+--------------------------------------------
 
 find  -name "*.php"|xargs grep "mkdir"  				查找含有mkdir的文件
 
 grep -ri "listen = " /etc/php-fpm*	查找/etc/php-fpm含有listen关键字的文件
+
+grep -C 5 foo file  显示file文件中匹配foo字串那行以及上下5行
+grep -B 5 foo file  显示foo及前5行
+grep -A 5 foo file  显示foo及后5行
+
 
 -------------------
 
@@ -229,3 +241,35 @@ rsync --daemon 			rsync 启动
 echo aaa > 11.txt	覆盖写入 
 echo aaa >> 11.txt	追加写入 
 
+
+-------------svn---------------
+svn log -v xxx.php 显示修改的文件
+
+svn cat r10539 sort_table2.php  看此版本号以下的所有修改记录
+
+------------------------------------
+crontab dir:
+/var/spoll/cron/
+
+---------------awk grep---------------------
+export GREP_OPTIONS='--color=auto'		grep高亮
+
+
+cat event.20140723_0_00.log|awk '$1 == "login"{print $1"\t"$2"\t"$3"\t"}'|grep pt > /tmp/has_pt.txt 匹配有pt
+cat event.20140723_0_00.log|awk '$1 == "login"{print $1"\t"$2"\t"$3"\t"}'|grep -v pt > /tmp/no_pt.txt 匹配没有pt
+
+cat wireless_1.txt|awk '$2 == 6'|wc -l 		
+
+cat access.log.10 | awk '{a[$1]++} END {for(b in a) print b"\t"a[b]}' | sort -k2 -r | head -n 10
+
+
+------------------date----------------------
+
+date +%Y-%m-%d\ %H:%M:%S   获取年月日 时分秒
+date +%s	获取时间戳
+
+
+TIMESTR='2011-11-24'
+TM=`date +%s -d "$TIMESTR"`
+
+date -d @1199116800 "+%Y-%m-%d %H:%M:%S"		将时间戳转换为日期字符串
