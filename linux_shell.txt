@@ -273,3 +273,8 @@ TIMESTR='2011-11-24'
 TM=`date +%s -d "$TIMESTR"`
 
 date -d @1199116800 "+%Y-%m-%d %H:%M:%S"		将时间戳转换为日期字符串
+
+
+---------------------hadoop-----------------------------
+
+hadoop fs -ls /user/hadoop/public/data/user_behavior/20141107/
