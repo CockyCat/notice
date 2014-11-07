@@ -274,6 +274,9 @@ TM=`date +%s -d "$TIMESTR"`
 
 date -d @1199116800 "+%Y-%m-%d %H:%M:%S"		将时间戳转换为日期字符串
 
+-----------------------diff------------------
+diff -ruNa /home/xugang/gongjingwei/ /home/xugang/event/ > dir_diff.log
+
 
 ---------------------hadoop-----------------------------
 
