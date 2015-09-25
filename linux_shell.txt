@@ -281,3 +281,16 @@ diff -ruNa /home/xugang/gongjingwei/ /home/xugang/event/ > dir_diff.log
 ---------------------hadoop-----------------------------
 
 hadoop fs -ls /user/hadoop/public/data/user_behavior/20141107/
+
+
+------------------ln ----------
+ln -s /home/zhenwx/htccode-v1/    /home/zhenwx/htccode     中的/home/zhenwx/htccode-v1/就是源文件，/home/zhenwx/htccode      是链接文件名,其作用是当进入/home/zhenwx/htccode     目录，实际上是链接进入了/home/zhenwx/htccode-v1/目录
+
+
+----------------------svn---------------
+
+svn propedit svn:ignore .		//svn设置忽略的文件
+
+-------------curl ------------------------
+
+curl -H 'Host: api.ffan.com' 'http://45.122.0.18/appmarket/v1/category'
