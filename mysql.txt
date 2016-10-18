@@ -15,3 +15,46 @@ mysqldump -u wcnc -p smgp_apps_wcnc > wcnc.sql
 mysqldump -u wcnc -p smgp_apps_wcnc users> wcnc_users.sql
 3.导出一个数据库结构
 mysqldump -u wcnc -p -d --add-drop-table smgp_apps_wcnc >d:\wcnc_db.sql
+
+
+---------从文件导入到表--------------
+a.txt:
+
+110|1|f
+111|2|f
+112|3|f
+
+将以上文本格式导入到pt_test表里
+mysql -uroot -p'abc123' db_test -e "LOAD DATA LOCAL INFILE 'a.txt' REPLACE INTO TABLE pt_test FIELDS TERMINATED BY '|'"
+
+
+---------------------------------mysql 位运算------------------------------------
+
+mysql> select * from pt;
++-----+----+---------+-------------+
+| uid | pt | pt_flag | last_update |
++-----+----+---------+-------------+
+| 110 |  1 |       1 |        NULL |
+| 110 |  3 |       4 |        NULL |
++-----+----+---------+-------------+
+2 rows in set (0.00 sec)
+
+mysql> select * from test_user;
++-----+----+
+| uid | pt |
++-----+----+
+| 110 | 5  |
++-----+----+
+1 row in set (0.00 sec)
+
+select * from test_user where pt&4 !=0;		pt字段与上4进行位运算,看4是否在结果中。
+
+位与运算：
+
+二进制		十进制
+101			5
+100			4
+101			与结果:5
+
+位运算常用于判断某个权限是否属于权限集或者某个子元素是否属于集合
+---------------------------------------------------------------------------------------
