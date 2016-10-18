@@ -212,3 +212,7 @@ mysql>quit
 -----------------wput-----------------------
 
 wput -B ./$date*.ini ftp://$ftp_name:$ftp_pwd@$ftp_ip
+
+
+---------------memcache 列出所有keys------
+echo "stats cachedump 1 20 " | nc m1xxxx.xxx.com 11215 
